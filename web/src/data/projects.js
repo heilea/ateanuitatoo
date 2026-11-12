@@ -1,12 +1,17 @@
-// Remplace par les vrais noms (clients ou projets). Les photos se rangent
-// dans public/images/<folder>/1.jpg, 2.jpg, 3.jpg… (jusqu'à `count`).
+// Un projet = une ligne de la liste + un dossier de photos.
+// Les photos se rangent dans public/images/<folder>/1.jpg, 2.jpg, 3.jpg…
+// `count` est le nombre de photos du dossier.
 export const PROJECTS = [
-  { name: 'Project 01', sub: 'Forearm', folder: '01', count: 5 },
-  { name: 'Project 02', sub: 'Calf', folder: '02', count: 5 },
-  { name: 'Project 03', sub: 'Shoulder', folder: '03', count: 5 },
-  { name: 'Project 04', sub: 'Back', folder: '04', count: 5 },
-  { name: 'Project 05', sub: 'Wrist', folder: '05', count: 5 },
-  { name: 'Project 06', sub: 'Ribs', folder: '06', count: 5 },
-  { name: 'Project 07', sub: 'Thigh', folder: '07', count: 5 },
-  { name: 'Project 08', sub: 'Chest', folder: '08', count: 5 },
+  { name: 'Forearm', sub: '6 pieces', folder: 'forearm', count: 6 },
+  { name: 'Calf', sub: '5 pieces', folder: 'calf', count: 5 },
+  { name: 'Sleeve', sub: '5 pieces', folder: 'sleeve', count: 5 },
+  { name: 'Back', sub: '5 pieces', folder: 'back', count: 5 },
+  { name: 'Hand', sub: '4 pieces', folder: 'hand', count: 4 },
+  { name: 'Leg', sub: '6 pieces', folder: 'leg', count: 6 },
 ]
+
+// Quand un dossier contient plus de photos que de cartes affichées
+// (6 sur ordinateur) :
+//   true  = tirage au hasard à chaque sélection, toutes les photos finissent par passer
+//   false = toujours les premières (1.jpg, 2.jpg, 3.jpg…)
+export const RANDOM_PHOTOS = true

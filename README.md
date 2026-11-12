@@ -25,16 +25,35 @@ enregistrement.
 
 ### Ajouter ou renommer un projet
 
-1. Créer un dossier dans `web/public/images/`, par exemple `09/`.
+1. Créer un dossier dans `web/public/images/`, par exemple `chest/`.
 2. Y déposer les photos nommées `1.jpg`, `2.jpg`, `3.jpg`…
 3. Ajouter une ligne dans `web/src/data/projects.js` :
 
 ```js
-{ name: 'Nom du projet', sub: 'Zone du corps', folder: '09', count: 5 },
+{ name: 'Nom du projet', sub: 'Zone du corps', folder: 'chest', count: 5 },
 ```
 
-`count` est le nombre de photos du dossier. Six photos au maximum s'affichent
-en même temps sur ordinateur.
+`count` est le nombre de photos du dossier.
+
+### Ajouter des photos à un projet existant
+
+1. Déposer les nouvelles photos dans le dossier du projet, à la suite des
+   autres : s'il y a déjà `1.jpg` à `6.jpg`, la suivante s'appelle `7.jpg`.
+   Ne pas laisser de trou dans la numérotation.
+2. Mettre à jour `count` sur la ligne du projet dans
+   `web/src/data/projects.js`.
+
+Six cartes au maximum s'affichent en même temps sur ordinateur. Quand un
+dossier contient plus de photos, deux possibilités :
+
+- **Tirage au hasard (réglage par défaut).** Les cartes restent au nombre de
+  six, mais les photos sont tirées au hasard dans le dossier à chaque
+  sélection du projet. Réglage `RANDOM_PHOTOS` en bas de
+  `web/src/data/projects.js` : `true` pour le tirage au hasard, `false`
+  pour toujours afficher les premières photos (`1.jpg`, `2.jpg`…).
+- **Découper en plusieurs entrées.** Créer un second dossier (par exemple
+  `forearm-2/`) et une seconde ligne dans la liste (par exemple
+  `Forearm II`). Aucun code à modifier, et chaque photo a sa place fixe.
 
 ### Photos
 

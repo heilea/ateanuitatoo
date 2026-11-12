@@ -3,7 +3,9 @@ import { computePhotoLayout } from './photoLayout'
 import { flyIn, popOut, wiggle, settle } from './photoMotion'
 import { projectPhoto } from '../../data/site'
 import { PLACEHOLDER_HUES } from '../../data/theme'
+import { RANDOM_PHOTOS } from '../../data/projects'
 import { prefersReducedMotion } from '../../lib/motion'
+import { shuffle } from '../../lib/random'
 import './FloatingPhotos.css'
 
 const SPAWN_DELAY = 280 // ms : laisse les photos précédentes disparaître
@@ -63,8 +65,11 @@ export default function FloatingPhotos({ projects, current, onOpen }) {
     const delay = prefersReducedMotion() ? 0 : SPAWN_DELAY
 
     const spawn = () => {
+      // Numéros des photos du dossier (1, 2, 3…), mélangés si RANDOM_PHOTOS
+      const numbers = Array.from({ length: project.count }, (_, i) => i + 1)
+      const picks = RANDOM_PHOTOS ? shuffle(numbers) : numbers
       computePhotoLayout(project.count).forEach((slot, k) => {
-        const photo = createPhoto(project, k + 1, slot, hue, (photo) => open.current?.(photo))
+        const photo = createPhoto(project, picks[k], slot, hue, (photo) => open.current?.(photo))
         root.current.appendChild(photo.el)
         live.current.push(photo)
         flyIn(photo, slot, k)
