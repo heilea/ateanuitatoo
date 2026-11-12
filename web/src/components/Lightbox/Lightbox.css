@@ -1,0 +1,57 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(var(--shadow-rgb), 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: zoom-out;
+  animation: lightbox-fade 0.25s ease both;
+}
+
+.lightbox img, .lightbox-ph {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 30px 90px rgba(var(--shadow-rgb), 0.8);
+  animation: lightbox-zoom 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.lightbox img { object-fit: contain; }
+
+.lightbox-ph {
+  display: grid;
+  place-items: center;
+  width: min(70vh, 100%);
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(160deg, hsl(var(--hue) 22% 24%), hsl(var(--hue) 18% 12%));
+  color: var(--sand);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 22px;
+  right: clamp(20px, 4vw, 48px);
+  padding: 11px 20px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--night);
+  color: var(--sand);
+  font: 500 12px var(--font-text);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@keyframes lightbox-fade { from { opacity: 0; } }
+@keyframes lightbox-zoom { from { opacity: 0; transform: scale(0.85); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox, .lightbox img, .lightbox-ph { animation: none; }
+}

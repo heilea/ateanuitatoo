@@ -1,0 +1,29 @@
+.photos { position: fixed; inset: 0; z-index: 10; pointer-events: none; overflow: hidden; }
+
+.photo { position: absolute; left: 0; top: 0; pointer-events: auto; will-change: transform; }
+.photo-float, .photo-frame { will-change: transform; }
+
+.photo-frame {
+  border-radius: 4px;
+  background: var(--night-2);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(var(--shadow-rgb), 0.6), 0 2px 8px rgba(var(--shadow-rgb), 0.45);
+  cursor: pointer;
+}
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+
+/* Cadre de remplacement tant que la vraie photo n'est pas là */
+.photo-frame.ph {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, hsl(var(--hue) 22% 24%), hsl(var(--hue) 18% 12%));
+  color: var(--sand);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px;
+}
+.photo-frame.ph img { display: none; }
+.photo-frame.ph::after { content: attr(data-label); opacity: 0.6; }

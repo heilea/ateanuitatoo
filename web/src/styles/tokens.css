@@ -1,0 +1,23 @@
+/* Couleurs du site. À garder accordées avec data/theme.js. */
+:root {
+  --night: #1a120c;
+  --night-2: #2a1e15;
+  --night-rgb: 26, 18, 12;
+  --shadow-rgb: 10, 6, 3;
+  --sand: #f3e9d8;
+  --muted: #a8957c;
+  --accent: #d2b48c;
+  --accent-rgb: 210, 180, 140;
+
+  --font-display: "Pirata One", serif;
+  --font-text: "Manrope", system-ui, sans-serif;
+
+  /* Marge gauche commune à la liste des projets et au compteur */
+  --gutter: clamp(56px, 7vw, 104px);
+
+  color-scheme: dark;
+}
+
+@media (max-width: 700px) {
+  :root { --gutter: 44px; }
+}

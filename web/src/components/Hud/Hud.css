@@ -1,0 +1,20 @@
+.counter, .hint {
+  position: fixed;
+  bottom: 30px;
+  z-index: 30;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.counter { left: var(--gutter); }
+.counter b { color: var(--sand); font-weight: 600; }
+
+.hint { left: calc(var(--gutter) + 90px); text-transform: uppercase; transition: opacity 0.6s ease; }
+.hint.off { opacity: 0; }
+
+@media (max-width: 700px) {
+  .hint { display: none; }
+}

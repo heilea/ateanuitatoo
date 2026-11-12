@@ -1,0 +1,5 @@
+# Réglages locaux de l'assistant
+.claude/
+
+.DS_Store
+Thumbs.db

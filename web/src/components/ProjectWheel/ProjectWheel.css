@@ -1,0 +1,65 @@
+.wheel {
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  width: min(50vw, 560px);
+  z-index: 20;
+  pointer-events: none;
+}
+.wheel ul { position: relative; height: 100%; list-style: none; }
+.wheel li {
+  position: absolute;
+  left: var(--gutter);
+  top: 50%;
+  transform-origin: left center;
+  will-change: transform, opacity;
+}
+
+.item {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--muted);
+  pointer-events: auto;
+  touch-action: none;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.05;
+  text-shadow: 0 0 14px var(--night);
+  transition: color 0.35s ease;
+}
+.item .name { display: block; margin: 0; flex-wrap: nowrap !important; }
+.item .sub {
+  display: block;
+  height: 12px;
+  margin-top: 8px;
+  font-family: var(--font-text);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.item.active { color: var(--sand); }
+
+/* Trait devant le projet sélectionné */
+.item::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 0.55em;
+  width: 26px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s ease;
+}
+.item.active::before { transform: scaleX(1); }
+.item:focus-visible { outline: 1px solid var(--sand); outline-offset: 8px; }
+
+@media (max-width: 700px) {
+  .wheel { width: 64vw; }
+  .item { font-size: 28px; }
+  .item::before { left: -30px; width: 18px; }
+}

@@ -1,0 +1,14 @@
+.bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+
+.bg-photo { position: absolute; inset: 0; background: center / cover no-repeat; }
+
+/* Assombrit le côté de la liste des projets pour garder les noms lisibles */
+.bg-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(var(--night-rgb), 0.85) 0%, rgba(var(--night-rgb), 0.35) 45%, rgba(var(--night-rgb), 0.15) 100%),
+    linear-gradient(0deg, rgba(var(--night-rgb), 0.5), transparent 35%);
+}
+
+.bg-rays { position: absolute; inset: 0; }
