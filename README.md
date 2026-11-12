@@ -58,7 +58,7 @@ Dans `web/src/data/site.js` (`INSTAGRAM_URL` et `DM_URL`).
 
 Les réglages de la lumière, de la fumée (`intensity`, `trail`, `size`) et du
 grain sont dans `web/src/components/Background/Background.jsx`.
-Sur téléphone et tablette, la fumée est désactivée et la lumière est allégée.
+Sur téléphone et tablette, la lumière est désactivée et la fumée est en qualité réduite.
 
 ## Mettre en ligne
 

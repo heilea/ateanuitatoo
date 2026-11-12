@@ -8,7 +8,7 @@ import './Background.css'
 
 // Photo de fond, voile sombre, rayons de lumière et encre qui suivent la souris
 export function Background() {
-  // Mode allégé : pas de fumée (elle suit une souris) et rayons en définition réduite
+  // Mode allégé (téléphones, tablettes) : pas de rayons de lumière, fumée en qualité réduite
   const lite = isLiteDevice()
 
   return (
@@ -16,7 +16,7 @@ export function Background() {
       <div className="bg" aria-hidden="true">
         <div className="bg-photo" style={{ backgroundImage: `url(${BACKGROUND_PHOTO})` }} />
         <div className="bg-shade" />
-        <div className="bg-rays">
+        {!lite && <div className="bg-rays">
           <LightRays
             raysOrigin="top-right"
             raysColor={COLORS.light}
@@ -28,13 +28,12 @@ export function Background() {
             mouseInfluence={0.2}
             noiseAmount={0.05}
             distortion={0.04}
-            maxDevicePixelRatio={lite ? 1 : 2}
           />
-        </div>
+        </div>}
       </div>
 
       {/* zIndex 5 : au-dessus du fond, sous les photos et les textes */}
-      {!lite && <SplashCursor
+      <SplashCursor
         rainbow={false}
         colors={[COLORS.beige, COLORS.brown, COLORS.cream]}
         intensity={0.7}
@@ -43,9 +42,10 @@ export function Background() {
         swirl={3}
         trail={3}
         momentum={1.6}
+        quality={lite ? 'low' : 'high'}
         clickSplash
         zIndex={5}
-      />}
+      />
     </>
   )
 }
