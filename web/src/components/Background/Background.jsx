@@ -50,7 +50,7 @@ export function Background() {
   )
 }
 
-// Grain filmique, par-dessus tout le site
+// Grain filmique, par-dessus tout le site sauf la photo agrandie (Lightbox)
 export function Grain() {
   return <Noise fixed opacity={0.07} blendMode="overlay" zIndex={60} />
 }
